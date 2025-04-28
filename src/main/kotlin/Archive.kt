@@ -20,7 +20,7 @@ fun archiveMenu() {
 
             2 -> break
 
-            else -> println("Нет такого номера!\nПопробуйте ещё раз...\n")
+            else -> println(Message.WRONG_NUMBER.text)
         }
     }
 }
@@ -29,11 +29,11 @@ fun archivesActionMenu() {
     while (true) {
         println("Список ваших архивов:")
         archives.forEach { (key, archive) -> println("'$key' - ${archive.name}") }
-        println("'${archives.size}' - 'Вернуться назад'\n")
+        println("\n'${archives.size}' - 'Вернуться назад'\n")
         when (val scanner = scannerInt(null)) {
             in 0 until archives.size -> notesMenu(scanner, archives[scanner]!!.notes)
             archives.size -> break
-            else -> println("Нет такого номера!\nПопробуйте ещё раз...\n")
+            else -> println(Message.WRONG_NUMBER.text)
         }
     }
 }

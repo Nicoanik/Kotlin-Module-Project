@@ -17,7 +17,7 @@ fun notesMenu(key: Int, notes: Map<Int, Note>) {
 
             2 -> break
 
-            else -> println("Нет такого номера!\nПопробуйте ещё раз...\n")
+            else -> println(Message.WRONG_NUMBER.text)
         }
     }
 }
@@ -26,11 +26,11 @@ fun notesActionMenu(key: Int, notes: Map<Int, Note>) {
     while (true) {
         println("Список ваших заметок в архиве '${archives[key]!!.name}':")
         notes.forEach { (key, note) -> println("'$key' - ${note.name}") }
-        println("'${notes.size}' - 'Вернуться назад'\n")
+        println("\n'${notes.size}' - 'Вернуться назад'\n")
         when (val scanner = scannerInt(null)) {
             in 0 until notes.size -> printNote(scanner, archives[key]!!.notes)
             notes.size -> break
-            else -> println("Нет такого номера!\nПопробуйте ещё раз...\n")
+            else -> println(Message.WRONG_NUMBER.text)
         }
     }
 }
