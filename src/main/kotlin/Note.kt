@@ -9,7 +9,8 @@ fun createNote(key: Int, notes: Map<Int, Note>) {
 
 fun notesMenu(key: Int, notes: Map<Int, Note>) {
     while (true) {
-        when (val scanner = scannerInt("Мы находимся в архиве '${archives[key]!!.name}':", notesMenu)) {
+        println("Мы находимся в архиве '${archives[key]!!.name}':")
+        when (val scanner = scannerInt(notesMenu)) {
             0 -> createNote(key, notes)
 
             1 -> if (notes.isNotEmpty()) notesActionMenu(key, notes) else println("Здесь ещё нет заметок!!!\nПопробуйте её создать...\n")
@@ -23,9 +24,10 @@ fun notesMenu(key: Int, notes: Map<Int, Note>) {
 
 fun notesActionMenu(key: Int, notes: Map<Int, Note>) {
     while (true) {
+        println("Список ваших заметок в архиве '${archives[key]!!.name}':")
         notes.forEach { (key, note) -> println("'$key' - ${note.name}") }
         println("'${notes.size}' - 'Вернуться назад'\n")
-        when (val scanner = scannerInt("Список ваших заметок в архиве '${archives[key]!!.name}':", null)) {
+        when (val scanner = scannerInt(null)) {
             in 0 until notes.size -> printNote(scanner, archives[key]!!.notes)
             notes.size -> break
             else -> println("Нет такого номера!\nПопробуйте ещё раз...\n")

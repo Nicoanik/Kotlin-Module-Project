@@ -1,8 +1,7 @@
 import java.util.Scanner
 
-fun scannerInt(message: String?, menu: Map<Int, String>?): Int {
+fun scannerInt(menu: Map<Int, String>?): Int {
     while (true) {
-        if (message != null) println(message)
         if (menu != null) printMenu(menu)
         println("Введите номер действия:")
         val scanner = Scanner(System.`in`)
@@ -14,6 +13,6 @@ fun scannerString(message: String): String {
     while (true) {
         println(message)
         val scanner = Scanner(System.`in`).nextLine()
-        if (scanner.isNotEmpty()) return scanner else println("Поле не может быть пустым!!!\nВведите текст...\n")
+        if (scanner.isNotEmpty()) return scanner else println("Это поле не может быть пустым!!!\nВведите текст...\n")
     }
 }

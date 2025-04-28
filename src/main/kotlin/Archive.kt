@@ -12,7 +12,8 @@ fun createArchive() {
 
 fun archiveMenu() {
     while (true) {
-        when (val scanner = scannerInt("Основное меню:", archivesMenu)) {
+        println("Основное меню:")
+        when (val scanner = scannerInt(archivesMenu)) {
             0 -> createArchive()
 
             1 -> if (archives.isNotEmpty()) archivesActionMenu() else println("Нужно создать хотя бы один архив!!!\n")
@@ -26,9 +27,10 @@ fun archiveMenu() {
 
 fun archivesActionMenu() {
     while (true) {
+        println("Список ваших архивов:")
         archives.forEach { (key, archive) -> println("'$key' - ${archive.name}") }
         println("'${archives.size}' - 'Вернуться назад'\n")
-        when (val scanner = scannerInt("Список ваших архивов:", null)) {
+        when (val scanner = scannerInt(null)) {
             in 0 until archives.size -> notesMenu(scanner, archives[scanner]!!.notes)
             archives.size -> break
             else -> println("Нет такого номера!\nПопробуйте ещё раз...\n")
